@@ -224,7 +224,7 @@ public class Main2Activity extends AppCompatActivity {
             }
         }
         filename+=ext;
-        String dir=sharedpreferences.getString(Batch,"");
+        String dir=sharedpreferences.getString(Batch,"").toUpperCase();
         final StorageReference storageReference=storage.getReference();
         storageReference.child(f).child(dir).child(filename).putFile(fileUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
