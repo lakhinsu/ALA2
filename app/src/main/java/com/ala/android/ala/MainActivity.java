@@ -40,8 +40,9 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
 
        sharedpreferences = getSharedPreferences(MyPREFERENCES, MODE_PRIVATE);
-       if(sharedpreferences.contains(GroupID))
-            groupid.setText(sharedpreferences.getString(GroupID,""));
+       if(sharedpreferences.contains(GroupID)) {
+           groupid.setText(sharedpreferences.getString(GroupID, ""));
+       }
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {

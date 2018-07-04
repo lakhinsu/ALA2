@@ -12,11 +12,12 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="34dp"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/namelabel1"
@@ -26,43 +27,49 @@
                 android:fontFamily="@font/open_sans"
                 android:text="Member 1"
                 android:textSize="24sp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="0.9">
+                android:layout_weight="0.9"
+                android:orientation="vertical">
+
                 <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textImeMultiLine"
                     android:id="@+id/name1"
-                    android:hint="Name"/>
-                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number|textImeMultiLine"
-                    android:hint="Enrollment no."
-                    android:id="@+id/en1" />
+                    android:hint="Name"
+                    android:inputType="textImeMultiLine" />
+
                 <EditText
+                    android:id="@+id/en1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enrollment no."
+                    android:inputType="number|textImeMultiLine" />
+
+                <EditText
+                    android:id="@+id/email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Gmail address"
-                    android:inputType="textEmailAddress|textImeMultiLine"
-                    android:id="@+id/email"/>
+                    android:inputType="textEmailAddress|textImeMultiLine" />
+
                 <EditText
+                    android:id="@+id/batch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textImeMultiLine"
-                    android:id="@+id/batch"
-                    android:hint="Batch"/>
+                    android:hint="Batch"
+                    android:inputType="textImeMultiLine" />
             </LinearLayout>
 
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp">
 
             <TextView
                 android:id="@+id/namelabel2"
@@ -72,73 +79,82 @@
                 android:fontFamily="@font/open_sans"
                 android:text="Member 2"
                 android:textSize="24sp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="0.9">
+                android:layout_weight="0.9"
+                android:orientation="vertical">
+
                 <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textImeMultiLine"
                     android:id="@+id/name2"
-                    android:hint="Name"/>
-                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number|textImeMultiLine"
+                    android:hint="Name"
+                    android:inputType="textImeMultiLine" />
+
+                <EditText
+                    android:id="@+id/en2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="Enrollment no."
-                    android:id="@+id/en2" />
+                    android:inputType="number|textImeMultiLine" />
 
             </LinearLayout>
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="20dp">
+
             <TextView
+                android:id="@+id/namelabel3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/namelabel3"
-                android:text="Member 3"
-                android:textSize="24sp"
                 android:layout_weight="0.1"
-                android:fontFamily="@font/open_sans"/>
+                android:fontFamily="@font/open_sans"
+                android:text="Member 3"
+                android:textSize="24sp" />
+
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_weight="0.9">
+                android:layout_weight="0.9"
+                android:orientation="vertical">
+
                 <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textImeMultiLine"
                     android:id="@+id/name3"
-                    android:hint="Name"/>
-                <EditText
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="number|textImeMultiLine"
+                    android:hint="Name"
+                    android:inputType="textImeMultiLine" />
+
+                <EditText
+                    android:id="@+id/en3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
                     android:hint="Enrollment no."
-                    android:id="@+id/en3" />
+                    android:inputType="number|textImeMultiLine" />
             </LinearLayout>
         </LinearLayout>
+
         <Button
+            android:id="@+id/regbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/regbutton"
+            android:layout_gravity="center"
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
-            android:textSize="22sp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button"
             android:fontFamily="@font/open_sans"
             android:text="Regiter"
             android:textAllCaps="false"
-            android:background="@drawable/button"
             android:textColor="@color/textColor"
-            android:textStyle="bold"
-            android:layout_gravity="center"
-            android:layout_marginTop="20dp"/>
+            android:textSize="22sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

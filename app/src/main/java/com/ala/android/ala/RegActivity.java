@@ -10,10 +10,15 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 public class RegActivity extends AppCompatActivity {
     EditText name1,name2,name3,en1,en2,en3,mail,batch;
     Button reg;
     SharedPreferences sharedpreferences;
+    DatabaseReference mDatabase;
+
 
     public static final String MyPREFERENCES = "GroupPrefs" ;
     public static final String Name1 = "name1Key";
@@ -58,6 +63,10 @@ public class RegActivity extends AppCompatActivity {
                 s2=en2.getText().toString();
                 s3=en3.getText().toString();
 
+                groups g1=new groups(name1.getText().toString(),s1,mail.getText().toString(),name2.getText().toString(),s2,name3.getText().toString(),s3);
+
+                mDatabase = FirebaseDatabase.getInstance().getReference();
+
                 if(s1.length()!=12 || s2.length() !=12 || s3.length()!=12)
                 {
                     Toast.makeText(getApplicationContext(),"Enter valid Enrollment no.",Toast.LENGTH_SHORT).show();
@@ -66,11 +75,34 @@ public class RegActivity extends AppCompatActivity {
                     String id=s1.substring(10)+s2.substring(10)+s3.substring(10);
                     data.putString(GroupID, id);
                     data.commit();
+                    mDatabase.child("Groups").child(id).setValue(g1);
                     Intent up=new Intent(getApplicationContext(),MainActivity.class);
                     startActivity(up);
                 }
             }
         });
 
+    }
+}
+class groups
+{
+    public String name1;
+    public String en1;
+    public String mail;
+    public String name2;
+    public String en2;
+    public String name3;
+    public String en3;
+
+    groups(){};
+    groups(String name1,String en1,String mail,String name2,String en2,String name3,String en3)
+    {
+        this.name1=name1;
+        this.en1=en1;
+        this.mail=mail;
+        this.name2=name2;
+        this.en2=en2;
+        this.name3=name3;
+        this.en3=en3;
     }
 }
