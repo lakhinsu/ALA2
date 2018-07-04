@@ -16,8 +16,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp">
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0.3"
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/namelabel1"
@@ -68,8 +69,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0.3"
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/namelabel2"
@@ -106,8 +108,9 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginBottom="8dp"
+            android:layout_weight="0.3"
+            android:layout_marginTop="8dp">
 
             <TextView
                 android:id="@+id/namelabel3"
@@ -138,16 +141,21 @@
                     android:hint="Enrollment no."
                     android:inputType="number|textImeMultiLine" />
             </LinearLayout>
+
+
         </LinearLayout>
 
         <Button
             android:id="@+id/regbutton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_weight="0.1"
             android:layout_gravity="center"
+            android:scrollbars="vertical"
             android:layout_marginLeft="18dp"
             android:layout_marginRight="18dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
             android:background="@drawable/button"
             android:fontFamily="@font/open_sans"
             android:text="Regiter"
