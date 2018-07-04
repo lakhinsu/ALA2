@@ -2,7 +2,9 @@ package com.ala.android.ala;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
@@ -34,9 +36,12 @@ public class Main2Activity extends AppCompatActivity {
     Uri fileUri;
     String tempFile;
 
-
+    public static final String MyPREFERENCES = "GroupPrefs" ;
+    public static final String GroupID = "groupKey";
+    public static final String Batch = "batch";
     TextView f1;
 
+    SharedPreferences sharedpreferences;
 
     FirebaseStorage storage;
     FirebaseDatabase database;
@@ -60,15 +65,17 @@ public class Main2Activity extends AppCompatActivity {
 
         clear=(Button) findViewById(R.id.button12);
 
-        spin=(Spinner) findViewById(R.id.spinner);
+        //spin=(Spinner) findViewById(R.id.spinner);
 
         spin2=(Spinner) findViewById(R.id.spinner2);
 
-        final EditText m1=(EditText) findViewById(R.id.editText9);
+        sharedpreferences = getSharedPreferences(MyPREFERENCES, Context.MODE_PRIVATE);
+
+        /*final EditText m1=(EditText) findViewById(R.id.editText9);
         final EditText m2=(EditText) findViewById(R.id.editText10);
         final EditText m3=(EditText) findViewById(R.id.editText11);
         final EditText m4=(EditText) findViewById(R.id.editText12);
-        //final EditText m5=(EditText) findViewById(R.id.editText13);
+        //final EditText m5=(EditText) findViewById(R.id.editText13);*/
 
         f1=(TextView) findViewById(R.id.textView23);
 
@@ -76,11 +83,11 @@ public class Main2Activity extends AppCompatActivity {
 
         f1.setText("");
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+       ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, getResources()
                 .getStringArray(R.array.batches));
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spin.setAdapter(adapter);
+        /*spin.setAdapter(adapter);
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> arg0, View arg1,
@@ -94,7 +101,7 @@ public class Main2Activity extends AppCompatActivity {
 
                 e="A";
             }
-        });
+        });*/
 
 
         ArrayAdapter<String> adapter2 = new ArrayAdapter<String>(this,
@@ -122,16 +129,18 @@ public class Main2Activity extends AppCompatActivity {
             public void onClick(View view) {
                 if(ContextCompat.checkSelfPermission(Main2Activity.this, Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED)
                 {
-                    a=m1.getText().toString();
+                    /*a=m1.getText().toString();
                     b=m2.getText().toString();
                     c=m3.getText().toString();
                     d=m4.getText().toString();
-                    //e=m5.getText().toString();
+                    //e=m5.getText().toString();*/
 
-                    if(a.length()==0)
-                        Toast.makeText(getApplicationContext(),"Need atleast 1 Enrollment no!",Toast.LENGTH_SHORT).show();
-                    else if(e.length()==0)
-                        Toast.makeText(getApplicationContext(),"Enter lab batch",Toast.LENGTH_SHORT).show();
+                    String test= sharedpreferences.getString(GroupID,"");
+                    String test2= sharedpreferences.getString(Batch,"");
+                    if(test.length()==0)
+                        Toast.makeText(getApplicationContext(),"Need to register first",Toast.LENGTH_SHORT).show();
+                    else if(test2.length()==0)
+                        Toast.makeText(getApplicationContext(),"Need to register first",Toast.LENGTH_SHORT).show();
                     else
                         selectfile();
                 }
@@ -148,10 +157,10 @@ public class Main2Activity extends AppCompatActivity {
 
                 if(fileUri!=null) {
                     uploadfile(fileUri);
-                    a=m1.getText().toString();
+                    /*a=m1.getText().toString();
                     b=m2.getText().toString();
                     c=m3.getText().toString();
-                    d=m4.getText().toString();
+                    d=m4.getText().toString();*/
                     // e=m5.getText().toString();
 
                 }
@@ -164,13 +173,13 @@ public class Main2Activity extends AppCompatActivity {
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                m1.setText("");
+               /* m1.setText("");
                 m2.setText("");
                 m3.setText("");
                 m4.setText("");
                 // m5.setText("");
                 f1.setText("");
-                spin.setSelection(0);
+                spin.setSelection(0);*/
                 spin2.setSelection(0);
             }
         });
@@ -199,7 +208,7 @@ public class Main2Activity extends AppCompatActivity {
         progressDialog.show();
 
 
-        String filename=" "+a+"_"+b+"_"+c+"_"+d;
+        String filename=sharedpreferences.getString(GroupID,"");
         String temp=new String(tempFile);
         int dotFlag = 0;
         String ext=new String("");
@@ -215,7 +224,7 @@ public class Main2Activity extends AppCompatActivity {
             }
         }
         filename+=ext;
-        String dir=e.toUpperCase();
+        String dir=sharedpreferences.getString(Batch,"");
         final StorageReference storageReference=storage.getReference();
         storageReference.child(f).child(dir).child(filename).putFile(fileUri)
                 .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -265,7 +274,7 @@ public class Main2Activity extends AppCompatActivity {
             fileUri=data.getData();
             Toast.makeText(getApplicationContext(),data.getData().toString(),Toast.LENGTH_SHORT).show();
             tempFile=data.getData().getLastPathSegment();
-            f1.setText(" "+data.getData().getLastPathSegment());
+            f1.setText(" "+data.getData().toString());
 
             //this is point
         }

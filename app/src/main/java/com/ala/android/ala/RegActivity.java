@@ -28,6 +28,7 @@ public class RegActivity extends AppCompatActivity {
     public static final String En2 = "en2Key";
     public static final String En3 = "en3Key";
     public static final String GroupID = "groupKey";
+    public static final String Batch = "batch";
 
 
 
@@ -57,6 +58,7 @@ public class RegActivity extends AppCompatActivity {
                 data.putString(En1,en1.getText().toString());
                 data.putString(En2,en2.getText().toString());
                 data.putString(En3,en3.getText().toString());
+                data.putString(Batch,batch.getText().toString());
 
                 String s1,s2,s3;
                 s1=en1.getText().toString();
@@ -67,7 +69,7 @@ public class RegActivity extends AppCompatActivity {
 
                 mDatabase = FirebaseDatabase.getInstance().getReference();
 
-                if(s1.length()!=12 || s2.length() !=12 || s3.length()!=12)
+                if(s1.length()!=12 )
                 {
                     Toast.makeText(getApplicationContext(),"Enter valid Enrollment no.",Toast.LENGTH_SHORT).show();
                 }
